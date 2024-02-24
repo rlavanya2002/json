@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+</head>
+<body>
+   <h1>FOOD DETAILS</h1>
+    <p id="demo"></p>
+<script>
+  
+ let doc = '{"product":[' +
+ '{"name":"snacks","price":50},' +
+ '{"name":"chaat","price":100},' +
+ '{"name":"dessert","price":200},' +
+ '{"name":"candy","price":90},' +
+ '{"name":"rices","price":120}]}';
+
+let text = JSON.parse(doc);
+
+// Ask user for input
+let sortOrder = prompt("Enter 'a' for ascending or 'd' for descending order of price:");
+
+// Sort products based on price
+if (sortOrder.toLowerCase() === 'a') {
+    text.product.sort((a, b) => a.price - b.price);
+} else if (sortOrder.toLowerCase() === 'd') {
+    text.product.sort((a, b) => b.price - a.price);
+} else {
+    document.getElementById("demo").innerHTML = "Invalid input for sorting order!";
+}
+
+// Display products
+let de = "<table border='1' cellpadding='5' cellspacing='0'><tr><th>Name</th><th>Price</th></tr>"; 
+text.product.forEach(product => {
+    de += "<tr><td>" + product.name + "</td><td>" + product.price + "</td></tr>";
+});
+de += "</table>";
+document.getElementById("demo").innerHTML = de;
+
+</script>
+</body>
+</html>

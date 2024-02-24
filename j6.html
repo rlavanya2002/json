@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+<body>
+   <h1>FOOD DETAILS</h1>
+    <p id="demo"></p>
+    <input type="text" id="foodNameInput" placeholder="Enter food name">
+    <button onclick="getFoodPrice()">Get Price</button>
+    <p id="priceOutput"></p>
+    
+    <script>
+        let doc = '{"product":[' +
+            '{"name":"snacks","price":50},' +
+            '{"name":"chaat","price":100},' +
+            '{"name":"dessert","price":200},' +
+            '{"name":"candy","price":90},' +
+            '{"name":"rices","price":120}]}';
+
+        let text = JSON.parse(doc);
+        let de = "<table border='1' cellpadding='5' cellspacing='5'><tr><th>Name</th><th>Price</th></tr>"; 
+        text.product.forEach(item => {
+            de += "<tr><td>" + item.name + "</td><td>" + item.price + "rs</td></tr>";
+        });
+        de += "</table>"
+        document.getElementById("demo").innerHTML = de; 
+
+        function getFoodPrice() {
+            let foodName = document.getElementById("foodNameInput").value;
+            let priceOutput = document.getElementById("priceOutput");
+            let found = false;
+            text.product.forEach(item => {
+                if (item.name.toLowerCase() === foodName.toLowerCase()) {
+                    priceOutput.textContent = "Price of " + foodName + ": " + item.price + "rs";
+                    found = true;
+                }
+            });
+            if (!found) {
+                priceOutput.textContent = "Food item not found!";
+            }
+        }
+    </script>
+</body>
+</html>

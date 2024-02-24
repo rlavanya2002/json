@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p><table></table>
+    <script>
+let text = {
+    "cars": {
+        "Nissan": [
+            {"model":"Sentra", "doors":4},
+            {"model":"Maxima", "doors":4},
+            {"model":"Skyline", "doors":2}
+        ],
+        "Ford": [
+            {"model":"Taurus", "doors":4},
+            {"model":"Escort", "doors":4}
+        ]
+    }
+}
+
+
+
+// document.getElementById("demo").innerHTML = text.cars.Nissan[0].model; 
+let carInfo = text.cars.Nissan[0].model + " - " + text.cars.Nissan[0].doors+" <br>"+text["cars"]["Ford"][1]["model"];
+        document.getElementById("demo").innerHTML = carInfo;
+ </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+</head>
+<body>
+   <h1>FOOD DETAILS</h1>
+    <p id="demo"></p>
+<script>
+  
+ let doc = '{"product":[' +
+ '{"name":"snacks","price":"MRP rate" },' +
+ '{"name":"chaat","price":"100rs" },' +
+ '{"name":"dessert","price":"200rs"},' +
+ '{"name":"candy","price":"90rs"},' +
+ '{"name":"rices","price":"120rs"}]}';
+
+let text = JSON.parse(doc);
+let de = "<table border='1' cellpadding='5' cellspacing='0'><tr><th>Name</th><th>Price</th></tr>"; 
+for (let i in text.product) { 
+    de += "<tr><td>" + text.product[i].name + "</td><td>" + text.product[i].price + "</td></tr>";
+}
+de += "</table>"
+document.getElementById("demo").innerHTML = de; 
+
+// Ask user for input
+let userInput = prompt("Enter the name of the product:");
+
+// Check if the user input matches any product name
+let found = false;
+for (let i = 0; i < text.product.length; i++) {
+    if (text.product[i].name.toLowerCase() === userInput.toLowerCase()) {
+        found = true;
+        break;
+    }
+}
+
+if (found) {
+    alert("Product found!");
+} else {
+    alert("Product not found!");
+}
+
+</script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+</head>
+<body>
+   <h1>FOOD DETAILS</h1>
+    <p id="demo"></p>
+<script>
+  
+ let doc = '{"product":[' +
+ '{"name":"snacks","price":"MRP rate" },' +
+ '{"name":"chaat","price":"100rs" },' +
+ '{"name":"dessert","price":"200rs"},' +
+ '{"name":"candy","price":"90rs"},' +
+ '{"name":"rices","price":"120rs"}]}';
+
+let text = JSON.parse(doc);
+
+// Ask user for input
+let userInput = prompt("Enter the name of the product:");
+
+// Find the product details based on user input
+let productDetails = text.product.find(product => product.name.toLowerCase() === userInput.toLowerCase());
+
+// Display the product details if found, otherwise show an error message
+if (productDetails) {
+    let de = "<table border='1' cellpadding='5' cellspacing='0'><tr><th>Name</th><th>Price</th></tr>"; 
+    de += "<tr><td>" + productDetails.name + "</td><td>" + productDetails.price + "</td></tr>";
+    de += "</table>";
+    document.getElementById("demo").innerHTML = de;
+} else {
+    document.getElementById("demo").innerHTML = "Product not found!";
+}
+
+</script>
+</body>
+</html>
+

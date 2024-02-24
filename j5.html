@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+</head>
+<body>
+   <h1>FOOD DETAILS</h1>
+    <p id="demo"></p>
+<script>
+  
+ let doc = '{"product":[' +'{"name":"snacks","price":"MRP rate" },' 
+ +'{"name":"chaat","price":"100rs" },'
+ +'{"name":"dessert","price":"200rs"},'
+ +'{"name":"candy","price":"90rs"},'
+ +'{"name":"rices","price":"120rs"}]}';
+
+let text=JSON.parse(doc);
+let de = "<table border='5' cellpadding='5' cellspacing='5'><tr><th>Name</th><th>Price</th></tr>"; 
+for (let i in text.product){ 
+        de +="<tr><td>"+ text.product[i].name+"</td>"+ " " + "<td>"+ text.product[i].price+"</td></tr>";}
+
+de += "</table>"
+document.getElementById("demo").innerHTML = de; 
+
+
+</script>
+</body>
+</html>
